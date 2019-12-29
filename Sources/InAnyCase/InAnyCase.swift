@@ -81,7 +81,7 @@ private extension String {
     
     func split(by ranges: [Range<String.Index>]) -> [Substring] {
         guard !ranges.isEmpty else {
-            return []
+            return [Substring(self)]
         }
         
         var result: [Substring] = []

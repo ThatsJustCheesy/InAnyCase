@@ -46,10 +46,12 @@ public enum JoinStyle: WordJoinStyle {
     /// space case
     case space
     
+    private static let camelSplitRegex = Regex("(?<!\\p{Lu})(?=\\p{Lu})")
+    
     public func split(_ string: Substring) -> [Substring] {
         switch self {
         case .camel:
-            return String(string).split(by: Regex("(?<!\\p{Lu})(?=\\p{Lu})"))
+            return String(string).split(by: Self.camelSplitRegex)
         case .snake:
             return string.split(separator: "_")
         case .kebab:
